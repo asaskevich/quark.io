@@ -1,7 +1,7 @@
 {
   "name": "quark.io",
   "description": "The minimalistic web framework for creating small and beautiful HTTP servers.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "url-pattern": "~0.6.0",
     "jade": "~1.8.1",
@@ -10,7 +10,7 @@
   },
   "author":"Alex Saskevich @asaskevich",
   "license": "MIT",
-  "repository": "asaskevich/quark.io",
+  "repository": "http://github.com/asaskevich/quark.io",
   "homepage": "http://github.com/asaskevich/quark.io",
   "bugs": "http://github.com/asaskevich/quark.io/issues",
   "main": "lib/index.js",
@@ -21,6 +21,8 @@
     "restful",
     "router",
     "app",
-    "api"
+    "api",
+    "simple",
+    "http"
   ]
 }

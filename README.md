@@ -15,6 +15,7 @@ quark.io - minimalistic web framework for Node.js
 Just do `npm install quark.io`
 
 #### Hello World Server
+
 ```js
 var quark = require('quark.io');
 var quark = new quark();
@@ -26,7 +27,11 @@ quark.get('/', function (req, res) {
 quark.listen(3002);
 ```
 
+#### Another examples
+Another examples look at the `examples` directory of the repository.
+
 #### Creating new routes
+
 * `quark.get(route, function(req, res, [params]) { ... })`
 * `quark.post(route, function(req, res, [params]) { ... })`
 * `quark.put(route, function(req, res, [params]) { ... })`
@@ -37,6 +42,7 @@ Routes use params, which can be defined in route, like this `/user/:id`. Params 
 #### Middleware
 When you create new routes, you can pass array of `function(req, res) { ... }` or one `function(req, res) { ... }` that will be used as middleware for defined route.
 For example:
+
 ```js
 quark.get("/", function (req, res) {
     res.ok("Hello, World!");
@@ -64,12 +70,15 @@ res.renderFile(fileName, options, [ownFileRender]); // fileName is relative path
 By default, **quark.io** uses Jade as primary template engine. If you want to use own, you can pass `render` and `renderFile` callbacks to the `res.render` and `res.renderFile`.
 
 #### Static files
+
 ```js
 quark.staticFiles(dir);
 ```
+
 Will use `dir` as the static file directory.
 
 #### Some arguments
+
 ```js
     quark.port = 8888; // Default listened port
     quark.printErrors = true; // Will print stack traces for generated errors
