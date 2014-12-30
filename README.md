@@ -73,3 +73,6 @@ Will use `dir` as the static file directory.
     quark.printErrors = true; // Will print stack traces for generated errors
     quark.server; // Native Node.js server
 ```
+
+#### Support
+If you do have a contribution for the package feel free to put up a Pull Request or open Issue.
