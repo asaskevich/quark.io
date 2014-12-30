@@ -1,5 +1,7 @@
 quark.io - minimalistic web framework for Node.js
 ======
+[![npm version](https://badge.fury.io/js/quark.io.svg)](http://badge.fury.io/js/quark.io)
+
 **quark.io** is the minimalistic web framework for creating small and beautiful HTTP servers.
 
 #### Main features
@@ -76,3 +78,6 @@ Will use `dir` as the static file directory.
 
 #### Support
 If you do have a contribution for the package feel free to put up a Pull Request or open Issue.
+
+
+[![NPM](https://nodei.co/npm/quark.io.png)](https://nodei.co/npm/quark.io/)
