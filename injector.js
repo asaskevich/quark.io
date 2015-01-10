@@ -1,8 +1,9 @@
-var jade = require('jade');
+var http = require('http');
 var sizeof = require('object-sizeof');
-var colors = require('colors');
 
-module.exports.inject = function (res) {
+module.exports = function () {
+    var res = http.OutgoingMessage.prototype;
+
     res._end = res.end;
     res._write = res.write;
     res.bodySize = 0;
@@ -14,7 +15,6 @@ module.exports.inject = function (res) {
         if (this.alreadySent) throw new Error("Response already sent!");
         this._end(data, encoding);
         this.alreadySent = true;
-        console.log("\tStatus:".cyan, this.statusCode, "Size:".cyan, this.bodySize, "bytes");
     };
     res.send = function (data, code, headers) {
         code = code || 200;
@@ -49,15 +49,15 @@ module.exports.inject = function (res) {
         _headers["Content-Type"] = "text/json";
         this.send(JSON.stringify(data), 200, _headers);
     };
-    res.render = function (template, options, render) {
-        render = jade.render || render;
+    res.render = function (template, options) {
+        render = global.quark._renderTemplate;
         var html = render(template, options);
         res.html(html);
     };
-    res.renderFile = function (file, options, render) {
-        var renderFile = jade.renderFile || render;
+    res.renderFile = function (file, options) {
+        var renderFile = global.quark._renderFile;
+        if (global.quark._debugMode) global.quark._logger.info('\tRendering file:', process.cwd() + "/" + file);
         var html = renderFile(process.cwd() + "/" + file, options);
         res.html(html);
     };
-    return res;
 };

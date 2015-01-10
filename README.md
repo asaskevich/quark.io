@@ -17,38 +17,67 @@ Just do `npm install quark.io`
 #### Hello World Server
 
 ```js
-var quark = require('quark.io');
-var quark = new quark();
+var quark = require('./quark.io');
 
-quark.get('/', function (req, res) {
-    res.ok("Hello, World!");
+var app = new quark({
+    port: 3002
 });
 
-quark.listen(3002);
+app.get('/', function(req, res) {
+    res.ok('Hello, World!')
+});
+
+app.start();
 ```
 
 #### Another examples
 Another examples look at the `examples` directory of the repository.
 
-#### Creating new routes
-
-* `quark.get(route, function(req, res, [params]) { ... })`
-* `quark.post(route, function(req, res, [params]) { ... })`
-* `quark.put(route, function(req, res, [params]) { ... })`
-* `quark.delete(route, function(req, res, [params]) { ... })`
-
-Routes use params, which can be defined in route, like this `/user/:id`. Params will be passed to callback as `{ id: ... }`.
-
-#### Middleware
-When you create new routes, you can pass array of `function(req, res) { ... }` or one `function(req, res) { ... }` that will be used as middleware for defined route.
-For example:
+#### Creating new server
 
 ```js
-quark.get("/", function (req, res) {
-    res.ok("Hello, World!");
-}, function (req, res) {
-    console.log("Middleware active!");
+var quark = require('./quark.io');
+
+var app = new quark({
+    port: 3002, // Listening port, by default 8888
+    debug: true, // Debug mode, will produce more output to the logger
+    statics: ['public/', 'uploads/'], // Static directories, this array by default empty.
+    logger: < Any logger that has similar methods as console >, // By default output goes to the console
+    renderTemplate: < Any callback function that acts as 'jade.render' >, // By default used 'jade.render'
+    renderFile: < Any callback function that acts as 'jade.renderFile' >, // By default used 'jade.renderFile'
 });
+```
+
+#### Routing
+
+Simple routes:
+
+```js
+app.get('/', function(req, res) { ... });
+app.post('/user/save', function(req, res) { ... });
+app.put('/user/update', function(req, res) { ... });
+app.delete('/user/remove', function(req, res) { ... });
+```
+
+Routes with arguments (argument names in route **should be** equals to the names of the arguments of function):
+
+```js
+app.get('/topics/:topicId/message/:message', function(req, res, topicId, message) { ... });
+app.post('/user/:userId/send/:message', function(req, res, userId, message) { ... });
+```
+
+#### Middleware
+
+```js
+function middleware(req, res) {
+    console.log('Middleware active!');
+};
+
+function anotherMiddleware(req, res) {
+    console.log('Another middleware active!');
+};
+
+app.get('/', function(req, res) { ... }, middleware, anotherMiddleware);
 ```
 
 #### Requests and responses
@@ -62,27 +91,8 @@ res.text(data, [headers]);
 res.html(data, [headers]);
 res.json(data, [headers]);
 res.redirect(data, [redirectUrl, [headers]]);
-res.render(template, options, [ownRender]);
-res.renderFile(fileName, options, [ownFileRender]); // fileName is relative path to the working directory
-```
-
-#### Using custom template engines
-By default, **quark.io** uses Jade as primary template engine. If you want to use own, you can pass `render` and `renderFile` callbacks to the `res.render` and `res.renderFile`.
-
-#### Static files
-
-```js
-quark.staticFiles(dir);
-```
-
-Will use `dir` as the static file directory.
-
-#### Some arguments
-
-```js
-    quark.port = 8888; // Default listened port
-    quark.printErrors = true; // Will print stack traces for generated errors
-    quark.server; // Native Node.js server
+res.render(template, options);
+res.renderFile(fileName, options);
 ```
 
 #### Support
