@@ -35,9 +35,8 @@ module.exports = function (staticsList) {
         if (global.quark._debugMode) global.quark._logger.info('\tLooking for static file:'.cyan, filename);
 
         if (fs.existsSync(filename)) {
-
             if (fs.statSync(filename).isDirectory()) filename += '/index.html';
-
+            if (!fs.existsSync(filename)) return false;
             fs.readFile(filename, "binary", function (err, file) {
                 if (err) {
                     return false

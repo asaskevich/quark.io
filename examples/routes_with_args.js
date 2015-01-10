@@ -1,4 +1,4 @@
-var quark = require('./quark.io');
+var quark = require('quark.io');
 
 var app = new quark({
     port: 3002,
