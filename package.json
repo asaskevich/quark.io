@@ -1,0 +1,56 @@
+{
+  "name": "quark.io",
+  "description": "The minimalistic web framework for creating small and beautiful HTTP servers.",
+  "version": "0.0.3",
+  "dependencies": {
+    "url-pattern": "~0.6.0",
+    "jade": "~1.8.1",
+    "object-sizeof": "~0.1.2",
+    "colors": "~1.0.3"
+  },
+  "author": {
+    "name": "Alex Saskevich @asaskevich"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/asaskevich/quark.io"
+  },
+  "homepage": "http://github.com/asaskevich/quark.io",
+  "bugs": {
+    "url": "http://github.com/asaskevich/quark.io/issues"
+  },
+  "main": "quark.js",
+  "keywords": [
+    "framework",
+    "web",
+    "rest",
+    "restful",
+    "router",
+    "app",
+    "api",
+    "simple",
+    "http"
+  ],
+  "_id": "quark.io@0.0.3",
+  "dist": {
+    "shasum": "bbab6586eff23989be8b993a832ffbe7d7643a7f",
+    "tarball": "http://registry.npmjs.org/quark.io/-/quark.io-0.0.3.tgz"
+  },
+  "_from": "quark.io@*",
+  "_npmVersion": "1.2.18",
+  "_npmUser": {
+    "name": "asaskevich",
+    "email": "sosjava@ya.ru"
+  },
+  "maintainers": [
+    {
+      "name": "asaskevich",
+      "email": "sosjava@ya.ru"
+    }
+  ],
+  "directories": {},
+  "_shasum": "bbab6586eff23989be8b993a832ffbe7d7643a7f",
+  "_resolved": "https://registry.npmjs.org/quark.io/-/quark.io-0.0.3.tgz",
+  "readme": "ERROR: No README data found!"
+}
