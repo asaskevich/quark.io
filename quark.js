@@ -65,7 +65,11 @@ module.exports = function (config) {
                     that._404_handler.execute(req, res);
             } catch (exception) {
                 if (that._debugMode) global.quark._logger.error(exception.stack);
+<<<<<<< HEAD
                 res.fail('500 - Some errors on the server side:\n\n\t' +
+=======
+                res.fail('500 - some errors on the server side:\n\n\t' +
+>>>>>>> 04bd30d32707925a23cecf43d525168511107032
                 exception.stack + '\n\nException:\n\n\t' + exception);
             }
             global.quark._logger.timeEnd('\tTime'.cyan);

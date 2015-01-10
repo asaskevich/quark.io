@@ -8,6 +8,7 @@
     "object-sizeof": "~0.1.2",
     "colors": "~1.0.3"
   },
+<<<<<<< HEAD
   "author": {
     "name": "Alex Saskevich @asaskevich"
   },
@@ -20,6 +21,13 @@
   "bugs": {
     "url": "http://github.com/asaskevich/quark.io/issues"
   },
+=======
+  "author":"Alex Saskevich @asaskevich",
+  "license": "MIT",
+  "repository": "http://github.com/asaskevich/quark.io",
+  "homepage": "http://github.com/asaskevich/quark.io",
+  "bugs": "http://github.com/asaskevich/quark.io/issues",
+>>>>>>> 04bd30d32707925a23cecf43d525168511107032
   "main": "quark.js",
   "keywords": [
     "framework",
@@ -31,6 +39,7 @@
     "api",
     "simple",
     "http"
+<<<<<<< HEAD
   ],
   "_id": "quark.io@0.0.3",
   "dist": {
@@ -54,3 +63,7 @@
   "_resolved": "https://registry.npmjs.org/quark.io/-/quark.io-0.0.3.tgz",
   "readme": "ERROR: No README data found!"
 }
+=======
+  ]
+}
+>>>>>>> 04bd30d32707925a23cecf43d525168511107032
