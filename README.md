@@ -97,6 +97,7 @@ res.renderFile(fileName, options);
 
 #### Performance
 Framework's performance tested with Apache Benchmark (all scripts and results inside `benchmark/` directory).
+
 ![Results](benchmark/benchmark.png)
 
 #### Support
