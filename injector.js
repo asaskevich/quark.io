@@ -50,7 +50,7 @@ module.exports = function () {
         this.send(JSON.stringify(data), 200, _headers);
     };
     res.render = function (template, options) {
-        render = global.quark._renderTemplate;
+        var render = global.quark._renderTemplate;
         var html = render(template, options);
         res.html(html);
     };

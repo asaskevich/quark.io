@@ -11,20 +11,29 @@ module.exports = function (staticsList) {
         DELETE: []
     };
     this._staticsList = staticsList || [];
+    this._staticsListLen = this._staticsList.length;
 
     this._get = function () {
+        if (global.quark._debugMode)
+            global.quark._logger.info("Route GET:".cyan, arguments[0]);
         this._routes.GET.push(new route(arguments));
     };
 
     this._post = function () {
+        if (global.quark._debugMode)
+            global.quark._logger.info("Route POST:".cyan, arguments[0]);
         this._routes.POST.push(new route(arguments));
     };
 
     this._put = function () {
+        if (global.quark._debugMode)
+            global.quark._logger.info("Route PUT:".cyan, arguments[0]);
         this._routes.PUT.push(new route(arguments));
     };
 
     this._delete = function () {
+        if (global.quark._debugMode)
+            global.quark._logger.info("Route DELETE:".cyan, arguments[0]);
         this._routes.DELETE.push(new route(arguments));
     };
 
@@ -51,19 +60,21 @@ module.exports = function (staticsList) {
     };
 
     this._execute = function (req, res) {
+        var _len, i;
+
         var _sDirs = this._staticsList;
-        var _len = _sDirs.length;
+        _len = this._staticsListLen;
 
         if (global.quark._debugMode) global.quark._logger.info('\tChecking statics...'.cyan);
 
-        for (var i = 0; i < _len; i++)
+        for (i = 0; i < _len; i++)
             if (this._serveStaticFiles(_sDirs[i], req, res)) return true;
 
         if (global.quark._debugMode) global.quark._logger.info('\tChecking routes...'.cyan);
 
-        var _routes = this._routes[req.method] || [];
-        var _len = _routes.length;
-        for (var i = 0; i < _len; i++)
+        var _routes = this._routes[req.method];
+        _len = _routes.length;
+        for (i = 0; i < _len; i++)
             if (_routes[i].execute(req, res)) return true;
 
         if (global.quark._debugMode) global.quark._logger.info('\tNot found any static files or routes for this request!'.yellow);

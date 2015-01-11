@@ -1,7 +1,7 @@
 {
   "name": "quark.io",
   "description": "The minimalistic web framework for creating small and beautiful HTTP servers.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "url-pattern": "~0.6.0",
     "jade": "~1.8.1",

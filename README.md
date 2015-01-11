@@ -95,6 +95,10 @@ res.render(template, options);
 res.renderFile(fileName, options);
 ```
 
+#### Performance
+Framework's performance tested with Apache Benchmark (all scripts and results inside `benchmark/` directory).
+![Results](benchmark/benchmark.png)
+
 #### Support
 If you do have a contribution for the package feel free to put up a Pull Request or open Issue.
 

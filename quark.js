@@ -13,7 +13,9 @@ module.exports = function (config) {
             var parsedConfig = require(config);
             this._parseConfig(parsedConfig);
         } else this._parseConfig({});
+    };
 
+    this._setGlobals = function () {
         global.quark = {
             _debugMode: this._debugMode,
             _logger: this._logger,
@@ -30,27 +32,36 @@ module.exports = function (config) {
         this._renderTemplate = config.renderTemplate || jade.render;
         this._renderFile = config.renderFile || jade.renderFile;
         this._router = new Router(this._statics);
+        this._setGlobals();
         this._404_handler = config["404"] || new route(["*", function (req, res) {
             res.send("404 - Not Found", 404);
         }]);
+        if (global.quark._debugMode) {
+            global.quark._logger.info("Port:".cyan, this._port);
+            global.quark._logger.info("Statics:".cyan, this._statics);
+        }
     };
 
     this.get = function () {
+        if (arguments.length < 2) throw new Error("Not enough arguments for the route!");
         var args = Array.prototype.slice.call(arguments);
         this._router._get.apply(this._router, args);
     };
 
     this.post = function () {
+        if (arguments.length < 2) throw new Error("Not enough arguments for the route!");
         var args = Array.prototype.slice.call(arguments);
         this._router._post.apply(this._router, args);
     };
 
     this.put = function () {
+        if (arguments.length < 2) throw new Error("Not enough arguments for the route!");
         var args = Array.prototype.slice.call(arguments);
         this._router._put.apply(this._router, args);
     };
 
     this.delete = function () {
+        if (arguments.length < 2) throw new Error("Not enough arguments for the route!");
         var args = Array.prototype.slice.call(arguments);
         this._router._delete.apply(this._router, args);
     };
@@ -64,7 +75,7 @@ module.exports = function (config) {
                 if (!that._router._execute(req, res))
                     that._404_handler.execute(req, res);
             } catch (exception) {
-                if (that._debugMode) global.quark._logger.error(exception.stack);
+                if (global.quark._debugMode) global.quark._logger.error(exception.stack);
                 res.fail('500 - some errors on the server side:\n\n\t' +
                 exception.stack + '\n\nException:\n\n\t' + exception);
             }
