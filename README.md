@@ -5,14 +5,14 @@ quark.io - minimalistic web framework for Node.js
 **quark.io** is the minimalistic web framework for creating small and beautiful HTTP servers.
 
 #### Main features
-* Less dependencies from others packages
+* Small number of 3rd party dependencies
 * Easy routing
 * Jade support
-* Static files
-* Middleware
+* Static file serving
+* Middleware support
 
 #### Installation
-Just do `npm install quark.io`
+Just run `npm install quark.io`
 
 #### Hello World Server
 
@@ -30,10 +30,10 @@ app.get('/', function(req, res) {
 app.start();
 ```
 
-#### Another examples
-Another examples look at the `examples` directory of the repository.
+#### More examples
+For more examples look at the `examples` directory of the repository.
 
-#### Creating new server
+#### Creating a new server
 
 ```js
 var quark = require('./quark.io');
@@ -59,7 +59,7 @@ app.put('/user/update', function(req, res) { ... });
 app.delete('/user/remove', function(req, res) { ... });
 ```
 
-Routes with arguments (argument names in route **should be** equals to the names of the arguments of function):
+Routes with arguments (argument names in the route **should be** the same as the function's arguments' names):
 
 ```js
 app.get('/topics/:topicId/message/:message', function(req, res, topicId, message) { ... });
@@ -81,7 +81,7 @@ app.get('/', function(req, res) { ... }, middleware, anotherMiddleware);
 ```
 
 #### Requests and responses
-Requests and responses are fully compatible with native node.js implementation. But response has some new features:
+Requests and responses are fully compatible with the native node.js implementation. But the response object has some additional methods:
 
 ```js
 res.send(data, [code, [headers]]);
@@ -101,7 +101,7 @@ Framework's performance tested with Apache Benchmark (all scripts and results in
 ![Results](benchmark/benchmark.png)
 
 #### Support
-If you do have a contribution for the package feel free to put up a Pull Request or open Issue.
+If you do have a contribution for the package feel free to make a pull request or open an issue.
 
 
 [![NPM](https://nodei.co/npm/quark.io.png)](https://nodei.co/npm/quark.io/)
