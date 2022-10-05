@@ -5,10 +5,11 @@
   "dependencies": {
     "url-pattern": "~0.6.0",
     "jade": "~1.8.1",
-    "object-sizeof": "~0.1.2",
-    "colors": "~1.0.3"
+    "object-sizeof": "~1.0.8",
+    "colors": "~1.0.3",
+    "@snyk/protect": "latest"
   },
-  "author":"Alex Saskevich @asaskevich",
+  "author": "Alex Saskevich @asaskevich",
   "license": "MIT",
   "repository": "http://github.com/asaskevich/quark.io",
   "homepage": "http://github.com/asaskevich/quark.io",
@@ -24,5 +25,10 @@
     "api",
     "simple",
     "http"
-  ]
+  ],
+  "scripts": {
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
